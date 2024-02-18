@@ -1,0 +1,16 @@
+CXX=g++
+CFLAGS=-g -O2 -Wall -fPIC -Wno-deprecated -pthread
+
+INC=-I../../include
+LIB=-L../../lib -lreactor
+OBJS = $(addsuffix .o, $(basename $(wildcard *.cpp)))
+
+all:
+	$(CXX) -o server $(CFLAGS) server.cpp $(INC) $(LIB)
+	$(CXX) -o client $(CFLAGS) client.cpp $(INC) $(LIB)
+
+clean:
+	-rm -f *.o server
+	-rm -f *.o client
+
+
